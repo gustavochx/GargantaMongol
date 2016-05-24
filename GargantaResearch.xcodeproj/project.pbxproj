@@ -12,7 +12,25 @@
 		197DA0981CF4CC33004E4909 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 197DA0961CF4CC33004E4909 /* Main.storyboard */; };
 		197DA09A1CF4CC33004E4909 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 197DA0991CF4CC33004E4909 /* Assets.xcassets */; };
 		197DA09D1CF4CC33004E4909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 197DA09B1CF4CC33004E4909 /* LaunchScreen.storyboard */; };
+		197DA0AE1CF4CE4C004E4909 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197DA0AB1CF4CE3C004E4909 /* ResearchKit.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		197DA0AA1CF4CE3C004E4909 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 197DA0A41CF4CE3C004E4909 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B183A5951A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		197DA0AC1CF4CE3C004E4909 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 197DA0A41CF4CE3C004E4909 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
+			remoteInfo = ResearchKitTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		197DA08F1CF4CC33004E4909 /* GargantaResearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GargantaResearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +40,7 @@
 		197DA0991CF4CC33004E4909 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		197DA09C1CF4CC33004E4909 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		197DA09E1CF4CC33004E4909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		197DA0A41CF4CE3C004E4909 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../../../Downloads/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				197DA0AE1CF4CE4C004E4909 /* ResearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +58,7 @@
 		197DA0861CF4CC33004E4909 = {
 			isa = PBXGroup;
 			children = (
+				197DA0A41CF4CE3C004E4909 /* ResearchKit.xcodeproj */,
 				197DA0911CF4CC33004E4909 /* GargantaResearch */,
 				197DA0901CF4CC33004E4909 /* Products */,
 			);
@@ -62,6 +83,15 @@
 				197DA09E1CF4CC33004E4909 /* Info.plist */,
 			);
 			path = GargantaResearch;
+			sourceTree = "<group>";
+		};
+		197DA0A51CF4CE3C004E4909 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				197DA0AB1CF4CE3C004E4909 /* ResearchKit.framework */,
+				197DA0AD1CF4CE3C004E4909 /* ResearchKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,12 +140,35 @@
 			mainGroup = 197DA0861CF4CC33004E4909;
 			productRefGroup = 197DA0901CF4CC33004E4909 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 197DA0A51CF4CE3C004E4909 /* Products */;
+					ProjectRef = 197DA0A41CF4CE3C004E4909 /* ResearchKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				197DA08E1CF4CC33004E4909 /* GargantaResearch */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		197DA0AB1CF4CE3C004E4909 /* ResearchKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ResearchKit.framework;
+			remoteRef = 197DA0AA1CF4CE3C004E4909 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		197DA0AD1CF4CE3C004E4909 /* ResearchKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ResearchKitTests.xctest;
+			remoteRef = 197DA0AC1CF4CE3C004E4909 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		197DA08D1CF4CC33004E4909 /* Resources */ = {
