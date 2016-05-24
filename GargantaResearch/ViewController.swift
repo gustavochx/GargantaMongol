@@ -11,14 +11,20 @@ import ResearchKit
 
 class ViewController: UIViewController {
     
+    // Arrays de títulos e sumários
+    var arraySummary = ["Seja bem-vindo a pesquisa de câncer de garganta.","Este aplicativo capta dados para efetuar nossa pesquisa.","Todos os dados aqui fornecidos serão particulares, não iremos identificar pessoas.","Nós iremos utilizar dos dados aqui fornecidos para obter resultados sobre a pesquisa.","","","Utilizaremos de procedimentos para nossa pesquisa.","Caso queira se retirar da pesquisa, fique à vontade.",""]
+    //var arrayReasons = ["Motivo","Motivo1","Motivo2","Motivo3","Motivo4","Motivo5"]
     
-    public var MicrophoneTask: ORKOrderedTask {
+    // Microfone
+    internal var MicrophoneTask: ORKOrderedTask {
          return ORKOrderedTask.audioTaskWithIdentifier("AudioTask", intendedUseDescription: "A sentence prompt will be given to you to read.", speechInstruction: "These are the last dying words of Joseph of Aramathea", shortSpeechInstruction: "The Holy Grail can be found in the Castle of Aaaaaaaaaaah", duration: 10, recordingSettings: nil, options: ORKPredefinedTaskOption.None)    }
     
-    public var FormularioDeAutorizacao: ORKConsentDocument {
+    
+    // MARK: formulátio já elaborado para autorização
+    internal var FormularioDeAutorizacao: ORKConsentDocument {
         
         let FormularioDeAutorizacao = ORKConsentDocument()
-        FormularioDeAutorizacao.title = "Exemplo de Autorização"
+        FormularioDeAutorizacao.title = "Autorização para pesquisa do Câncer de "
         
         let tiposDeSessoesDeAutorizacao: [ORKConsentSectionType] = [
             .Overview,
@@ -30,24 +36,24 @@ class ViewController: UIViewController {
         ]
         
         let sessoesDeAutorizacoes: [ORKConsentSection] = tiposDeSessoesDeAutorizacao.map {
-            
             tipoDeSessao in
             
             let sessaoDeAutorizacao = ORKConsentSection(type: tipoDeSessao)
-            sessaoDeAutorizacao.summary = "Resumo..."
-            sessaoDeAutorizacao.content = "Conteudo..."
+            sessaoDeAutorizacao.summary = arraySummary[tipoDeSessao.rawValue]
+            sessaoDeAutorizacao.content = arraySummary[tipoDeSessao.rawValue]
             
             return sessaoDeAutorizacao
         }
 
         FormularioDeAutorizacao.sections = sessoesDeAutorizacoes
-        
         FormularioDeAutorizacao.addSignature(ORKConsentSignature(forPersonWithTitle: nil, dateFormatString: nil, identifier: "AssinaturaDoFormularioDeAutorizacao"))
         
         return FormularioDeAutorizacao
     }
     
-    public var TarefasDeAutorizacao: ORKOrderedTask {
+    
+    // MARK: Tarefas de autorização para formulário
+    internal var TarefasDeAutorizacao: ORKOrderedTask {
         
         var steps = [ORKStep]()
         
@@ -59,28 +65,36 @@ class ViewController: UIViewController {
         let assinatura = formularioDeAutorizacao.signatures!.first! as ORKConsentSignature
         let revisaoDeAutorizacao = ORKConsentReviewStep(identifier: "RevisaoDeAutorizacao", signature: assinatura, inDocument: formularioDeAutorizacao)
         
-        revisaoDeAutorizacao.text = "Revisão de Autorização!"
-        revisaoDeAutorizacao.reasonForConsent = "Motivo..."
+        revisaoDeAutorizacao.text = "Revisão"
+        revisaoDeAutorizacao.reasonForConsent = "Após revisar o formulário, você aceita prosseguir com a Pesquisa?"
         
         steps += [revisaoDeAutorizacao]
         
         return ORKOrderedTask(identifier: "TarefasDeAutorizacao", steps: steps)
     }
     
+    // MARK: Tarefas de pesquisa para formulário
     
-    public var TarefasDePesquisa: ORKOrderedTask{
-        
-        
+    
+    internal var TarefasDePesquisa: ORKOrderedTask{
         var steps = [ORKStep]()
         
         let instrucao = ORKInstructionStep(identifier: "instrucao")
-        instrucao.title = "Titulo da pesquisa"
-        instrucao.text = "Instruções da pesquisa."
-        
+        instrucao.title = "Câncer de Garganta"
+        instrucao.text = "Responda as questões para contribuir com nossa pesquisa."
         steps += [instrucao]
         
-        let tituloDaQuestao = "O que voce esta sentindo?"
-        let opcoes = [ORKTextChoice(text:"BABABA", value:0),ORKTextChoice(text:"DUDUDU", value:1), ORKTextChoice(text:"DEDEDE",value:2)]
+        let tituloDaQuestao = "Quais destes sintomas você tem sentido?"
+        let opcoes = [
+            ORKTextChoice(text:"Roquidão", detailText: "Que não se resolve no período de 1 à 2 semanas.", value: 0, exclusive: false),
+            ORKTextChoice(text:"Dor de garganta.", detailText:"Que não se resolve no período de 1 à 2 semanas, mesmo com medicamentos.", value:1,exclusive: false),
+            ORKTextChoice(text:"Dificuldade de deglutição.",value:2),
+            ORKTextChoice(text:"Inchaço no pescoço", value: 3),
+            ORKTextChoice(text:"Perda de peso", detailText: "Não intencional.", value:4,exclusive: false),
+            ORKTextChoice(text:"Tosse",detailText: "Inexplicável.",value: 5,exclusive: false),
+            ORKTextChoice(text:"Tosse",detailText: "Com sangue.", value: 6, exclusive: false),
+            ORKTextChoice(text:"Sons respiratórios.", detailText: "Anormais(agudos)", value: 7, exclusive: false)
+        ]
         
         let formatoDaResposta:ORKTextChoiceAnswerFormat = ORKTextChoiceAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: opcoes)
         let perguntaProblemaDoUsuario = ORKQuestionStep(identifier: "perguntaProblemaDoUsuario", title: tituloDaQuestao, answer: formatoDaResposta)
@@ -96,6 +110,8 @@ class ViewController: UIViewController {
         
     }
     
+    
+    // MARK: Começa a pesquisa com o usuário
     @IBAction func startResearch(sender: AnyObject) {
     
         let taskViewController = ORKTaskViewController(task: TarefasDePesquisa, taskRunUUID: nil)
@@ -105,6 +121,7 @@ class ViewController: UIViewController {
     
     }
     
+    // MARK: Pega autorização do usuário
     @IBAction func getAuthorization(sender: AnyObject) {
     
         
@@ -115,7 +132,7 @@ class ViewController: UIViewController {
     
     }
     
-    
+    // MARK: Aciona a funcionalidade de microfone para gravação
     @IBAction func microphoneTapped(sender: AnyObject) {
     
         let taskViewController = ORKTaskViewController(task: MicrophoneTask, taskRunUUID: nil)
@@ -123,10 +140,7 @@ class ViewController: UIViewController {
         taskViewController.outputDirectory = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] , isDirectory: true)
         presentViewController(taskViewController, animated: true, completion: nil)
     
-    
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
