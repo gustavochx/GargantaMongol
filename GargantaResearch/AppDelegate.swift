@@ -7,15 +7,29 @@
 //
 
 import UIKit
+import CoreSpotlight
+import MobileCoreServices
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeImage as String)
+
+        attributeSet.title = "teste"
+        attributeSet.contentDescription = "EAEN"
+        
+        let item = CSSearchableItem(uniqueIdentifier: "Garganta", domainIdentifier: "br.com.garganta", attributeSet: attributeSet)
+        CSSearchableIndex.defaultSearchableIndex().indexSearchableItems([item], completionHandler: { Void in
+        
+        })
+        
+        
         return true
     }
 
