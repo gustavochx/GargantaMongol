@@ -12,6 +12,7 @@
 		197DA09A1CF4CC33004E4909 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 197DA0991CF4CC33004E4909 /* Assets.xcassets */; };
 		197DA09D1CF4CC33004E4909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 197DA09B1CF4CC33004E4909 /* LaunchScreen.storyboard */; };
 		19A00A361CF62454002D07D8 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A00A351CF62454002D07D8 /* CloudKit.framework */; };
+		19A00A391CF638C2002D07D8 /* Ayan_sings.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19A00A381CF638C2002D07D8 /* Ayan_sings.gif */; };
 		C51CA6E81CF6243700323A60 /* ComecoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51CA6E71CF6243700323A60 /* ComecoViewController.swift */; };
 		C51CA6EA1CF6270B00323A60 /* AutenticacaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51CA6E91CF6270B00323A60 /* AutenticacaoViewController.swift */; };
 		C51CA6EC1CF629AE00323A60 /* PesquisaSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51CA6EB1CF629AE00323A60 /* PesquisaSegue.swift */; };
@@ -20,7 +21,6 @@
 		C51CA6F31CF634A600323A60 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5F7C62C1CF4E1A600EA7070 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C51CA6F71CF6362500323A60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51CA6F61CF6362500323A60 /* Main.storyboard */; };
 		C5F7C6361CF4E4D300EA7070 /* MongolInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7C6351CF4E4D300EA7070 /* MongolInstruction.swift */; };
-		C5F7C6381CF4EB8900EA7070 /* Ayan_sings.gif in Resources */ = {isa = PBXBuildFile; fileRef = C5F7C6371CF4EB8900EA7070 /* Ayan_sings.gif */; };
 		C5F7C63B1CF4F01700EA7070 /* MongolVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7C6391CF4F01700EA7070 /* MongolVideoPlayer.swift */; };
 		C5F7C63C1CF4F01700EA7070 /* MongolAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7C63A1CF4F01700EA7070 /* MongolAudioPlayer.swift */; };
 		C5F7C63F1CF4F01D00EA7070 /* ezenggileer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C5F7C63D1CF4F01D00EA7070 /* ezenggileer.mp3 */; };
@@ -28,6 +28,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		19A00A401CF638F9002D07D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19A00A3A1CF638F9002D07D8 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B183A5951A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		19A00A421CF638F9002D07D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19A00A3A1CF638F9002D07D8 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
+			remoteInfo = ResearchKitTests;
+		};
 		C51CA6F41CF634A600323A60 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C5F7C6251CF4E1A600EA7070 /* ResearchKit.xcodeproj */;
@@ -81,6 +95,8 @@
 		197DA09E1CF4CC33004E4909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19A00A341CF62435002D07D8 /* GargantaResearch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GargantaResearch.entitlements; sourceTree = "<group>"; };
 		19A00A351CF62454002D07D8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		19A00A381CF638C2002D07D8 /* Ayan_sings.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Ayan_sings.gif; sourceTree = "<group>"; };
+		19A00A3A1CF638F9002D07D8 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../../../Downloads/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 		C51CA6E31CF61C3000323A60 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		C51CA6E71CF6243700323A60 /* ComecoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComecoViewController.swift; sourceTree = "<group>"; };
 		C51CA6E91CF6270B00323A60 /* AutenticacaoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutenticacaoViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +105,6 @@
 		C51CA6F61CF6362500323A60 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C5F7C6251CF4E1A600EA7070 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../Downloads/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 		C5F7C6351CF4E4D300EA7070 /* MongolInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MongolInstruction.swift; sourceTree = "<group>"; };
-		C5F7C6371CF4EB8900EA7070 /* Ayan_sings.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Ayan_sings.gif; path = ../Desktop/Ayan_sings.gif; sourceTree = "<group>"; };
 		C5F7C6391CF4F01700EA7070 /* MongolVideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MongolVideoPlayer.swift; sourceTree = "<group>"; };
 		C5F7C63A1CF4F01700EA7070 /* MongolAudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MongolAudioPlayer.swift; sourceTree = "<group>"; };
 		C5F7C63D1CF4F01D00EA7070 /* ezenggileer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ezenggileer.mp3; sourceTree = "<group>"; };
@@ -112,11 +127,12 @@
 		197DA0861CF4CC33004E4909 = {
 			isa = PBXGroup;
 			children = (
+				19A00A381CF638C2002D07D8 /* Ayan_sings.gif */,
 				C51CA6E31CF61C3000323A60 /* LocalAuthentication.framework */,
 				C5F7C63D1CF4F01D00EA7070 /* ezenggileer.mp3 */,
 				C5F7C63E1CF4F01D00EA7070 /* Batzorig Vaanchig - Morin Khuur.mp4 */,
-				C5F7C6371CF4EB8900EA7070 /* Ayan_sings.gif */,
 				C5F7C6251CF4E1A600EA7070 /* ResearchKit.xcodeproj */,
+				19A00A3A1CF638F9002D07D8 /* ResearchKit.xcodeproj */,
 				19A00A351CF62454002D07D8 /* CloudKit.framework */,
 				197DA0911CF4CC33004E4909 /* GargantaResearch */,
 				197DA0901CF4CC33004E4909 /* Products */,
@@ -150,6 +166,15 @@
 				C51CA6F61CF6362500323A60 /* Main.storyboard */,
 			);
 			path = GargantaResearch;
+			sourceTree = "<group>";
+		};
+		19A00A3B1CF638F9002D07D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19A00A411CF638F9002D07D8 /* ResearchKit.framework */,
+				19A00A431CF638F9002D07D8 /* ResearchKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		C5F7C6261CF4E1A600EA7070 /* Products */ = {
@@ -218,6 +243,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 19A00A3B1CF638F9002D07D8 /* Products */;
+					ProjectRef = 19A00A3A1CF638F9002D07D8 /* ResearchKit.xcodeproj */;
+				},
+				{
 					ProductGroup = C5F7C6261CF4E1A600EA7070 /* Products */;
 					ProjectRef = C5F7C6251CF4E1A600EA7070 /* ResearchKit.xcodeproj */;
 				},
@@ -230,6 +259,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		19A00A411CF638F9002D07D8 /* ResearchKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ResearchKit.framework;
+			remoteRef = 19A00A401CF638F9002D07D8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		19A00A431CF638F9002D07D8 /* ResearchKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ResearchKitTests.xctest;
+			remoteRef = 19A00A421CF638F9002D07D8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		C5F7C62C1CF4E1A600EA7070 /* ResearchKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -255,8 +298,8 @@
 				C5F7C63F1CF4F01D00EA7070 /* ezenggileer.mp3 in Resources */,
 				C5F7C6401CF4F01D00EA7070 /* Batzorig Vaanchig - Morin Khuur.mp4 in Resources */,
 				C51CA6F71CF6362500323A60 /* Main.storyboard in Resources */,
+				19A00A391CF638C2002D07D8 /* Ayan_sings.gif in Resources */,
 				197DA09A1CF4CC33004E4909 /* Assets.xcassets in Resources */,
-				C5F7C6381CF4EB8900EA7070 /* Ayan_sings.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

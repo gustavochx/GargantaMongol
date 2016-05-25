@@ -10,6 +10,7 @@ import UIKit
 import ResearchKit
 
 class AutenticacaoViewController: UIViewController {
+    var taskViewController:ORKTaskViewController?
     
     public var FormularioDeAutorizacao: ORKConsentDocument {
         
@@ -74,9 +75,9 @@ class AutenticacaoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let taskViewController = ORKTaskViewController(task: TarefasDeAutorizacao, taskRunUUID: nil)
-        taskViewController.delegate = self
-        presentViewController(taskViewController, animated: true, completion: nil)
+        taskViewController = ORKTaskViewController(task: TarefasDeAutorizacao, taskRunUUID: nil)
+        taskViewController!.delegate = self
+        presentViewController(taskViewController!, animated: true, completion: nil)
 
         // Do any additional setup after loading the view.
     }
