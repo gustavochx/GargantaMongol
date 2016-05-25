@@ -9,17 +9,16 @@
 /* Begin PBXBuildFile section */
 		197DA0931CF4CC33004E4909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197DA0921CF4CC33004E4909 /* AppDelegate.swift */; };
 		197DA0951CF4CC33004E4909 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197DA0941CF4CC33004E4909 /* ViewController.swift */; };
-		197DA0981CF4CC33004E4909 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 197DA0961CF4CC33004E4909 /* Main.storyboard */; };
 		197DA09A1CF4CC33004E4909 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 197DA0991CF4CC33004E4909 /* Assets.xcassets */; };
 		197DA09D1CF4CC33004E4909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 197DA09B1CF4CC33004E4909 /* LaunchScreen.storyboard */; };
-		C51CA6E41CF61C3000323A60 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51CA6E31CF61C3000323A60 /* LocalAuthentication.framework */; };
+		19A00A361CF62454002D07D8 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A00A351CF62454002D07D8 /* CloudKit.framework */; };
 		C51CA6E81CF6243700323A60 /* ComecoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51CA6E71CF6243700323A60 /* ComecoViewController.swift */; };
 		C51CA6EA1CF6270B00323A60 /* AutenticacaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51CA6E91CF6270B00323A60 /* AutenticacaoViewController.swift */; };
 		C51CA6EC1CF629AE00323A60 /* PesquisaSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51CA6EB1CF629AE00323A60 /* PesquisaSegue.swift */; };
 		C51CA6EE1CF62D8F00323A60 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51CA6ED1CF62D8F00323A60 /* MyTableViewCell.swift */; };
-		C5F7C62F1CF4E1B400EA7070 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F7C62C1CF4E1A600EA7070 /* ResearchKit.framework */; };
-		C5F7C6301CF4E2E600EA7070 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F7C62C1CF4E1A600EA7070 /* ResearchKit.framework */; };
-		C5F7C6311CF4E2E600EA7070 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5F7C62C1CF4E1A600EA7070 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C51CA6F21CF634A600323A60 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F7C62C1CF4E1A600EA7070 /* ResearchKit.framework */; };
+		C51CA6F31CF634A600323A60 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5F7C62C1CF4E1A600EA7070 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C51CA6F71CF6362500323A60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51CA6F61CF6362500323A60 /* Main.storyboard */; };
 		C5F7C6361CF4E4D300EA7070 /* MongolInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7C6351CF4E4D300EA7070 /* MongolInstruction.swift */; };
 		C5F7C6381CF4EB8900EA7070 /* Ayan_sings.gif in Resources */ = {isa = PBXBuildFile; fileRef = C5F7C6371CF4EB8900EA7070 /* Ayan_sings.gif */; };
 		C5F7C63B1CF4F01700EA7070 /* MongolVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7C6391CF4F01700EA7070 /* MongolVideoPlayer.swift */; };
@@ -29,6 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C51CA6F41CF634A600323A60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5F7C6251CF4E1A600EA7070 /* ResearchKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B183A4731A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
 		C5F7C62B1CF4E1A600EA7070 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C5F7C6251CF4E1A600EA7070 /* ResearchKit.xcodeproj */;
@@ -59,7 +65,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C5F7C6311CF4E2E600EA7070 /* ResearchKit.framework in Embed Frameworks */,
+				C51CA6F31CF634A600323A60 /* ResearchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,15 +76,17 @@
 		197DA08F1CF4CC33004E4909 /* GargantaResearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GargantaResearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		197DA0921CF4CC33004E4909 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		197DA0941CF4CC33004E4909 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		197DA0971CF4CC33004E4909 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		197DA0991CF4CC33004E4909 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		197DA09C1CF4CC33004E4909 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		197DA09E1CF4CC33004E4909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19A00A341CF62435002D07D8 /* GargantaResearch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GargantaResearch.entitlements; sourceTree = "<group>"; };
+		19A00A351CF62454002D07D8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C51CA6E31CF61C3000323A60 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		C51CA6E71CF6243700323A60 /* ComecoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComecoViewController.swift; sourceTree = "<group>"; };
 		C51CA6E91CF6270B00323A60 /* AutenticacaoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutenticacaoViewController.swift; sourceTree = "<group>"; };
 		C51CA6EB1CF629AE00323A60 /* PesquisaSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PesquisaSegue.swift; sourceTree = "<group>"; };
 		C51CA6ED1CF62D8F00323A60 /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		C51CA6F61CF6362500323A60 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C5F7C6251CF4E1A600EA7070 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../Downloads/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 		C5F7C6351CF4E4D300EA7070 /* MongolInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MongolInstruction.swift; sourceTree = "<group>"; };
 		C5F7C6371CF4EB8900EA7070 /* Ayan_sings.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Ayan_sings.gif; path = ../Desktop/Ayan_sings.gif; sourceTree = "<group>"; };
@@ -93,9 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C51CA6E41CF61C3000323A60 /* LocalAuthentication.framework in Frameworks */,
-				C5F7C6301CF4E2E600EA7070 /* ResearchKit.framework in Frameworks */,
-				C5F7C62F1CF4E1B400EA7070 /* ResearchKit.framework in Frameworks */,
+				C51CA6F21CF634A600323A60 /* ResearchKit.framework in Frameworks */,
+				19A00A361CF62454002D07D8 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +117,7 @@
 				C5F7C63E1CF4F01D00EA7070 /* Batzorig Vaanchig - Morin Khuur.mp4 */,
 				C5F7C6371CF4EB8900EA7070 /* Ayan_sings.gif */,
 				C5F7C6251CF4E1A600EA7070 /* ResearchKit.xcodeproj */,
+				19A00A351CF62454002D07D8 /* CloudKit.framework */,
 				197DA0911CF4CC33004E4909 /* GargantaResearch */,
 				197DA0901CF4CC33004E4909 /* Products */,
 			);
@@ -128,10 +136,10 @@
 			children = (
 				C5F7C6391CF4F01700EA7070 /* MongolVideoPlayer.swift */,
 				C5F7C63A1CF4F01700EA7070 /* MongolAudioPlayer.swift */,
+				19A00A341CF62435002D07D8 /* GargantaResearch.entitlements */,
 				197DA0921CF4CC33004E4909 /* AppDelegate.swift */,
 				197DA0941CF4CC33004E4909 /* ViewController.swift */,
 				C51CA6ED1CF62D8F00323A60 /* MyTableViewCell.swift */,
-				197DA0961CF4CC33004E4909 /* Main.storyboard */,
 				197DA0991CF4CC33004E4909 /* Assets.xcassets */,
 				197DA09B1CF4CC33004E4909 /* LaunchScreen.storyboard */,
 				C51CA6E91CF6270B00323A60 /* AutenticacaoViewController.swift */,
@@ -139,6 +147,7 @@
 				C5F7C6351CF4E4D300EA7070 /* MongolInstruction.swift */,
 				C51CA6E71CF6243700323A60 /* ComecoViewController.swift */,
 				C51CA6EB1CF629AE00323A60 /* PesquisaSegue.swift */,
+				C51CA6F61CF6362500323A60 /* Main.storyboard */,
 			);
 			path = GargantaResearch;
 			sourceTree = "<group>";
@@ -168,6 +177,7 @@
 			);
 			dependencies = (
 				C5F7C6331CF4E2E600EA7070 /* PBXTargetDependency */,
+				C51CA6F51CF634A600323A60 /* PBXTargetDependency */,
 			);
 			name = GargantaResearch;
 			productName = GargantaResearch;
@@ -186,6 +196,12 @@
 				TargetAttributes = {
 					197DA08E1CF4CC33004E4909 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = CK76EYN8RB;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -238,9 +254,9 @@
 				197DA09D1CF4CC33004E4909 /* LaunchScreen.storyboard in Resources */,
 				C5F7C63F1CF4F01D00EA7070 /* ezenggileer.mp3 in Resources */,
 				C5F7C6401CF4F01D00EA7070 /* Batzorig Vaanchig - Morin Khuur.mp4 in Resources */,
+				C51CA6F71CF6362500323A60 /* Main.storyboard in Resources */,
 				197DA09A1CF4CC33004E4909 /* Assets.xcassets in Resources */,
 				C5F7C6381CF4EB8900EA7070 /* Ayan_sings.gif in Resources */,
-				197DA0981CF4CC33004E4909 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +282,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C51CA6F51CF634A600323A60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ResearchKit;
+			targetProxy = C51CA6F41CF634A600323A60 /* PBXContainerItemProxy */;
+		};
 		C5F7C6331CF4E2E600EA7070 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ResearchKit;
@@ -274,14 +295,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		197DA0961CF4CC33004E4909 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				197DA0971CF4CC33004E4909 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		197DA09B1CF4CC33004E4909 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -382,11 +395,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GargantaResearch/GargantaResearch.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GargantaResearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = gh.GargantaResearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -394,11 +411,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GargantaResearch/GargantaResearch.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GargantaResearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = gh.GargantaResearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
