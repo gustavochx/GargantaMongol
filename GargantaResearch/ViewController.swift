@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         let FormularioDeAutorizacao = ORKConsentDocument()
         FormularioDeAutorizacao.title = "Autorização para pesquisa do Câncer de "
         
-        let tiposDeSessoesDeAutorizacao: [ORKConsentSectionType] = [
+        let tiposDeSessoesDeAutorizacao: [ORKConsentSectionType] = [ 
             .Overview,
             .DataGathering,
             .Privacy,

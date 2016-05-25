@@ -341,6 +341,7 @@
 				197DA0A31CF4CC33004E4909 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
