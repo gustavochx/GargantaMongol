@@ -8,64 +8,25 @@
 
 import UIKit
 import ResearchKit
+import LocalAuthentication
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
+     let titulos = ["Pesquisa","Audio"]
     
+    
+    
+    var contentHidden = false {
+        didSet {
+            guard contentHidden != oldValue && isViewLoaded() else { return }
+            childViewControllers.first?.view.hidden = contentHidden
+        }
+    }
     
     public var MicrophoneTask: ORKOrderedTask {
-         return ORKOrderedTask.audioTaskWithIdentifier("AudioTask", intendedUseDescription: "A sentence prompt will be given to you to read.", speechInstruction: "These are the last dying words of Joseph of Aramathea", shortSpeechInstruction: "The Holy Grail can be found in the Castle of Aaaaaaaaaaah", duration: 10, recordingSettings: nil, options: ORKPredefinedTaskOption.None)    }
-    
-    public var FormularioDeAutorizacao: ORKConsentDocument {
-        
-        let FormularioDeAutorizacao = ORKConsentDocument()
-        FormularioDeAutorizacao.title = "Exemplo de Autorização"
-        
-        let tiposDeSessoesDeAutorizacao: [ORKConsentSectionType] = [
-            .Overview,
-            .DataGathering,
-            .Privacy,
-            .DataUse,
-            .StudyTasks,
-            .Withdrawing
-        ]
-        
-        let sessoesDeAutorizacoes: [ORKConsentSection] = tiposDeSessoesDeAutorizacao.map {
-            
-            tipoDeSessao in
-            
-            let sessaoDeAutorizacao = ORKConsentSection(type: tipoDeSessao)
-            sessaoDeAutorizacao.summary = "Resumo..."
-            sessaoDeAutorizacao.content = "Conteudo..."
-            
-            return sessaoDeAutorizacao
-        }
-
-        FormularioDeAutorizacao.sections = sessoesDeAutorizacoes
-        
-        FormularioDeAutorizacao.addSignature(ORKConsentSignature(forPersonWithTitle: nil, dateFormatString: nil, identifier: "AssinaturaDoFormularioDeAutorizacao"))
-        
-        return FormularioDeAutorizacao
+         return MongolInstruction.gargantaTeste()
     }
     
-    public var TarefasDeAutorizacao: ORKOrderedTask {
-        
-        var steps = [ORKStep]()
-        
-        let formularioDeAutorizacao = FormularioDeAutorizacao
-        let autorizacaoVisual = ORKVisualConsentStep(identifier: "AutorizacaoVisual", document: formularioDeAutorizacao)
-        
-        steps += [autorizacaoVisual]
-        
-        let assinatura = formularioDeAutorizacao.signatures!.first! as ORKConsentSignature
-        let revisaoDeAutorizacao = ORKConsentReviewStep(identifier: "RevisaoDeAutorizacao", signature: assinatura, inDocument: formularioDeAutorizacao)
-        
-        revisaoDeAutorizacao.text = "Revisão de Autorização!"
-        revisaoDeAutorizacao.reasonForConsent = "Motivo..."
-        
-        steps += [revisaoDeAutorizacao]
-        
-        return ORKOrderedTask(identifier: "TarefasDeAutorizacao", steps: steps)
-    }
+   
     
     
     public var TarefasDePesquisa: ORKOrderedTask{
@@ -96,7 +57,7 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func startResearch(sender: AnyObject) {
+    func startResearch() {
     
         let taskViewController = ORKTaskViewController(task: TarefasDePesquisa, taskRunUUID: nil)
         taskViewController.delegate = self
@@ -104,19 +65,10 @@ class ViewController: UIViewController {
     
     
     }
-    
-    @IBAction func getAuthorization(sender: AnyObject) {
-    
-        
-        let taskViewController = ORKTaskViewController(task: TarefasDeAutorizacao, taskRunUUID: nil)
-        taskViewController.delegate = self
-        presentViewController(taskViewController, animated: true, completion: nil)
-        
-    
-    }
+
     
     
-    @IBAction func microphoneTapped(sender: AnyObject) {
+    func microphoneTapped() {
     
         let taskViewController = ORKTaskViewController(task: MicrophoneTask, taskRunUUID: nil)
         taskViewController.delegate = self
@@ -128,8 +80,10 @@ class ViewController: UIViewController {
     
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -137,7 +91,12 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
 
+    }
+ 
 }
 
 extension ViewController: ORKTaskViewControllerDelegate {
@@ -151,5 +110,36 @@ extension ViewController: ORKTaskViewControllerDelegate {
         
     }
     
+}
+
+extension ViewController{
+    
+   
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MyTableViewCell
+        
+        cell.title.text = titulos[indexPath.row]
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case 0:
+            startResearch()
+            break
+        case 1:
+            microphoneTapped()
+            break
+        default:
+            
+            break
+        }
+    }
 }
 

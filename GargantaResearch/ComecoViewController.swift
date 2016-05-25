@@ -7,12 +7,26 @@
 //
 
 import UIKit
+import ResearchKit
 
 class ComecoViewController: UIViewController {
+    
+    var contentHidden = false {
+        didSet {
+            guard contentHidden != oldValue && isViewLoaded() else { return }
+            childViewControllers.first?.view.hidden = contentHidden
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if ORKPasscodeViewController.isPasscodeStoredInKeychain() {
+            toStudy()
+        }
+        else {
+            toOnboarding()
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -31,5 +45,15 @@ class ComecoViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func toOnboarding() {
+        performSegueWithIdentifier("Autenticar", sender: self)
+    }
+    
+    func toStudy() {
+        performSegueWithIdentifier("Principal", sender: self)
+    }
 
 }
+
+

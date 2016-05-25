@@ -6,7 +6,7 @@
 //  Copyright © 2016 Gustavo Henrique. All rights reserved.
 //
 
-import Cocoa
+import AVFoundation
 
 class MongolVideoPlayer: NSObject {
 

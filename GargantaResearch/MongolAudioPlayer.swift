@@ -6,8 +6,15 @@
 //  Copyright © 2016 Gustavo Henrique. All rights reserved.
 //
 
-import Cocoa
+import AVFoundation
 
-class MongolAudioPlayer: NSObject {
-
+class MongolAudioPlayer: AVAudioPlayer {
+    override init() {
+        do{
+            let path = NSBundle.mainBundle().URLForResource("ezenggileer", withExtension: "mp3")
+            try super.init(contentsOfURL: path!)
+        }catch{
+            print(error)
+        }
+    }
 }

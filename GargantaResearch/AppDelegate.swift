@@ -7,15 +7,29 @@
 //
 
 import UIKit
+import ResearchKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var containerViewController: ComecoViewController? {
+        return window?.rootViewController as? ComecoViewController
+    }
 
+    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        let standardDefaults = NSUserDefaults.standardUserDefaults()
+        if standardDefaults.objectForKey("ORKSampleFirstRun") == nil {
+            ORKPasscodeViewController.removePasscodeFromKeychain()
+            standardDefaults.setValue("ORKSampleFirstRun", forKey: "ORKSampleFirstRun")
+        }
+        return true
+    }
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        lockApp()
         return true
     }
 
@@ -41,6 +55,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func lockApp() {
+        /*
+         Only lock the app if there is a stored passcode and a passcode
+         controller isn't already being shown.
+         */
+        guard ORKPasscodeViewController.isPasscodeStoredInKeychain() && !(containerViewController?.presentedViewController is ORKPasscodeViewController) else { return }
+        
+        window?.makeKeyAndVisible()
+        
+        let passcodeViewController = ORKPasscodeViewController.passcodeAuthenticationViewControllerWithText("Welcome back to ResearchKit Sample App", delegate: self) as! ORKPasscodeViewController
+        containerViewController?.presentViewController(passcodeViewController, animated: false, completion: nil)
+    }
 
+}
+
+extension AppDelegate: ORKPasscodeDelegate {
+    func passcodeViewControllerDidFinishWithSuccess(viewController: UIViewController) {
+        containerViewController?.contentHidden = false
+        viewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func passcodeViewControllerDidFailAuthentication(viewController: UIViewController) {
+    }
 }
 
