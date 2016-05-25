@@ -8,6 +8,7 @@
 
 import UIKit
 import ResearchKit
+import CloudKit
 
 class ViewController: UIViewController {
     
@@ -17,7 +18,7 @@ class ViewController: UIViewController {
     
     // Microfone
     internal var MicrophoneTask: ORKOrderedTask {
-         return ORKOrderedTask.audioTaskWithIdentifier("AudioTask", intendedUseDescription: "A sentence prompt will be given to you to read.", speechInstruction: "These are the last dying words of Joseph of Aramathea", shortSpeechInstruction: "The Holy Grail can be found in the Castle of Aaaaaaaaaaah", duration: 10, recordingSettings: nil, options: ORKPredefinedTaskOption.None)    }
+        return ORKOrderedTask.audioTaskWithIdentifier("AudioTask", intendedUseDescription: "A sentence prompt will be given to you to read.", speechInstruction: "These are the last dying words of Joseph of Aramathea", shortSpeechInstruction: "The Holy Grail can be found in the Castle of Aaaaaaaaaaah", duration: 10, recordingSettings: nil, options: ORKPredefinedTaskOption.None)    }
     
     
     // MARK: formulátio já elaborado para autorização
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
         let FormularioDeAutorizacao = ORKConsentDocument()
         FormularioDeAutorizacao.title = "Permission to perform this research about Throat Cancer"
         
-        let tiposDeSessoesDeAutorizacao: [ORKConsentSectionType] = [ 
+        let tiposDeSessoesDeAutorizacao: [ORKConsentSectionType] = [
             .Overview,
             .DataGathering,
             .Privacy,
@@ -44,7 +45,7 @@ class ViewController: UIViewController {
             
             return sessaoDeAutorizacao
         }
-
+        
         FormularioDeAutorizacao.sections = sessoesDeAutorizacoes
         FormularioDeAutorizacao.addSignature(ORKConsentSignature(forPersonWithTitle: nil, dateFormatString: nil, identifier: "AssinaturaDoFormularioDeAutorizacao"))
         
@@ -113,57 +114,89 @@ class ViewController: UIViewController {
     
     // MARK: Começa a pesquisa com o usuário
     @IBAction func startResearch(sender: AnyObject) {
-    
+        
         let taskViewController = ORKTaskViewController(task: TarefasDePesquisa, taskRunUUID: nil)
         taskViewController.delegate = self
         presentViewController(taskViewController, animated: true, completion: nil)
-    
-    
+        
+        
     }
     
     // MARK: Pega autorização do usuário
     @IBAction func getAuthorization(sender: AnyObject) {
-    
+        
         
         let taskViewController = ORKTaskViewController(task: TarefasDeAutorizacao, taskRunUUID: nil)
         taskViewController.delegate = self
         presentViewController(taskViewController, animated: true, completion: nil)
         
-    
+        
     }
     
     // MARK: Aciona a funcionalidade de microfone para gravação
     @IBAction func microphoneTapped(sender: AnyObject) {
-    
+        
         let taskViewController = ORKTaskViewController(task: MicrophoneTask, taskRunUUID: nil)
         taskViewController.delegate = self
         taskViewController.outputDirectory = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] , isDirectory: true)
         presentViewController(taskViewController, animated: true, completion: nil)
-    
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
+    
+    func gravaDados(resultado: NSData){
+        
+        let container = CKContainer.defaultContainer()
+        let publicDb = container.publicCloudDatabase
+        
+        
+        let ckResearch = CKRecord(recordType: "Research")
+        ckResearch.setObject(resultado, forKey: "resultado")
+        
+        publicDb.saveRecord(ckResearch, completionHandler: { (record,error) in
+            
+            if error != nil {
+                print(error?.localizedDescription)
+            }else{
+                print("Salvo!")
+            }
+        })
+    }
+    
+    
+    
 }
 
 extension ViewController: ORKTaskViewControllerDelegate {
     
     func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
         
-        print()
-        
         taskViewController.dismissViewControllerAnimated(true, completion: nil)
         
+        if let result = taskViewController.result.resultForIdentifier("perguntaProblemaDoUsuario") {
+            let data = NSKeyedArchiver.archivedDataWithRootObject(result)
+            gravaDados(data)
+        }
+    }
+    
+    func taskViewController(taskViewController: ORKTaskViewController, recorder: ORKRecorder, didFailWithError error: NSError) {
+        
+        print(error.description)
         
     }
+    
+    
     
 }
 
