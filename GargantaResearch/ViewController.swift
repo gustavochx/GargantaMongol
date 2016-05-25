@@ -12,7 +12,7 @@ import ResearchKit
 class ViewController: UIViewController {
     
     // Arrays de títulos e sumários
-    var arraySummary = ["Seja bem-vindo a pesquisa de câncer de garganta.","Este aplicativo capta dados para efetuar nossa pesquisa.","Todos os dados aqui fornecidos serão particulares, não iremos identificar pessoas.","Nós iremos utilizar dos dados aqui fornecidos para obter resultados sobre a pesquisa.","","","Utilizaremos de procedimentos para nossa pesquisa.","Caso queira se retirar da pesquisa, fique à vontade.",""]
+    var arraySummary = ["Welcome to the throat cancer research.","This app collect data to perform our research.","All data collected by this app is private, no one will be identified.","The collected data will be used to obtain the results of this research.","","","We will be using secure procedures in this research.","In the case you want to give up this research, feel free.",""]
     //var arrayReasons = ["Motivo","Motivo1","Motivo2","Motivo3","Motivo4","Motivo5"]
     
     // Microfone
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     internal var FormularioDeAutorizacao: ORKConsentDocument {
         
         let FormularioDeAutorizacao = ORKConsentDocument()
-        FormularioDeAutorizacao.title = "Autorização para pesquisa do Câncer de "
+        FormularioDeAutorizacao.title = "Permission to perform this research about Throat Cancer"
         
         let tiposDeSessoesDeAutorizacao: [ORKConsentSectionType] = [
             .Overview,
@@ -65,8 +65,8 @@ class ViewController: UIViewController {
         let assinatura = formularioDeAutorizacao.signatures!.first! as ORKConsentSignature
         let revisaoDeAutorizacao = ORKConsentReviewStep(identifier: "RevisaoDeAutorizacao", signature: assinatura, inDocument: formularioDeAutorizacao)
         
-        revisaoDeAutorizacao.text = "Revisão"
-        revisaoDeAutorizacao.reasonForConsent = "Após revisar o formulário, você aceita prosseguir com a Pesquisa?"
+        revisaoDeAutorizacao.text = "Review"
+        revisaoDeAutorizacao.reasonForConsent = "After reviewing this form, do you agree to go on with this research?"
         
         steps += [revisaoDeAutorizacao]
         
@@ -80,20 +80,20 @@ class ViewController: UIViewController {
         var steps = [ORKStep]()
         
         let instrucao = ORKInstructionStep(identifier: "instrucao")
-        instrucao.title = "Câncer de Garganta"
-        instrucao.text = "Responda as questões para contribuir com nossa pesquisa."
+        instrucao.title = "Throat Cancer"
+        instrucao.text = "Answer the following questions to contribute with this research."
         steps += [instrucao]
         
-        let tituloDaQuestao = "Quais destes sintomas você tem sentido?"
+        let tituloDaQuestao = "Wich of the following symptoms are you felling?"
         let opcoes = [
-            ORKTextChoice(text:"Roquidão", detailText: "Que não se resolve no período de 1 à 2 semanas.", value: 0, exclusive: false),
-            ORKTextChoice(text:"Dor de garganta.", detailText:"Que não se resolve no período de 1 à 2 semanas, mesmo com medicamentos.", value:1,exclusive: false),
-            ORKTextChoice(text:"Dificuldade de deglutição.",value:2),
-            ORKTextChoice(text:"Inchaço no pescoço", value: 3),
-            ORKTextChoice(text:"Perda de peso", detailText: "Não intencional.", value:4,exclusive: false),
-            ORKTextChoice(text:"Tosse",detailText: "Inexplicável.",value: 5,exclusive: false),
-            ORKTextChoice(text:"Tosse",detailText: "Com sangue.", value: 6, exclusive: false),
-            ORKTextChoice(text:"Sons respiratórios.", detailText: "Anormais(agudos)", value: 7, exclusive: false)
+            ORKTextChoice(text:"Hoarseness", detailText: "Wich does not ends in a period of 1 to 2 weeks.", value: 0, exclusive: false),
+            ORKTextChoice(text:"Sore Throat", detailText:"Wich does not ends in a period of 1 to 2 weeks, even though I am still using the medicine.", value:1,exclusive: false),
+            ORKTextChoice(text:"Swallow Difficulties.",value:2),
+            ORKTextChoice(text:"Swelling in the Neck", value: 3),
+            ORKTextChoice(text:"Lost of Wheight", detailText: "Not intentional.", value:4,exclusive: false),
+            ORKTextChoice(text:"Coughing",detailText: "Enexplicable.",value: 5,exclusive: false),
+            ORKTextChoice(text:"Coughing",detailText: "With blood.", value: 6, exclusive: false),
+            ORKTextChoice(text:"Breath sounds.", detailText: "Uncommon(acute)", value: 7, exclusive: false)
         ]
         
         let formatoDaResposta:ORKTextChoiceAnswerFormat = ORKTextChoiceAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: opcoes)
