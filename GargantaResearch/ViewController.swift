@@ -19,7 +19,7 @@ class ViewController: UITableViewController {
     
 
     
-    public var MicrophoneTask: ORKOrderedTask {
+    internal var MicrophoneTask: ORKOrderedTask {
          return MongolInstruction.gargantaTeste()
     }
     
