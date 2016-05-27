@@ -11,7 +11,7 @@ import ResearchKit
 import CloudKit
 
 class ViewController: UITableViewController {
-     let titulos = ["Pesquisa","Audio"]
+     let titulos = ["Pesquisa","Audio","Foto"]
     
     // Arrays de títulos e sumários
     var arraySummary = ["Welcome to the throat cancer research.","This app collect data to perform our research.","All data collected by this app is private, no one will be identified.","The collected data will be used to obtain the results of this research.","","","We will be using secure procedures in this research.","In the case you want to give up this research, feel free.",""]
@@ -23,10 +23,26 @@ class ViewController: UITableViewController {
          return MongolInstruction.gargantaTeste()
     }
     
-       // Microfone
-    
-    
-    
+    internal var pictureTask : ORKOrderedTask{
+        var steps = [ORKStep]()
+        
+        let instrucao = ORKInstructionStep(identifier: ORKInstruction0StepIdentifier)
+        instrucao.title = "Take a picture"
+        instrucao.text = "Take a picture of your throat"
+        instrucao.image = UIImage(named:"gargante")
+        steps += [instrucao]
+        
+        let picture = ORKImageCaptureStep(identifier: "pegarImagem")
+
+        steps += [picture]
+        
+        let summaryStep = ORKCompletionStep(identifier: "SummaryStep")
+        summaryStep.title = "Thanks!"
+        summaryStep.text = "Thanks for your answers!"
+        steps += [summaryStep]
+        
+        return ORKOrderedTask(identifier: "TarefasFoto", steps: steps)
+    }
     
     // MARK: Tarefas de pesquisa para formulário
     
@@ -56,8 +72,8 @@ class ViewController: UITableViewController {
         steps += [perguntaProblemaDoUsuario]
         
         let summaryStep = ORKCompletionStep(identifier: "SummaryStep")
-        summaryStep.title = "Right. Off you go!"
-        summaryStep.text = "That was easy!"
+        summaryStep.title = "Thanks!"
+        summaryStep.text = "Thanks for your answers!"
         steps += [summaryStep]
         
         return ORKOrderedTask(identifier: "TarefasDePesquisa", steps: steps)
@@ -82,6 +98,14 @@ class ViewController: UITableViewController {
         presentViewController(taskViewController, animated: true, completion: nil)
         
     }
+    
+    func pictureView()  {
+        let picViewController = ORKTaskViewController(task: pictureTask, taskRunUUID: nil)
+        picViewController.delegate = self
+        picViewController.outputDirectory = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] , isDirectory: true)
+        presentViewController(picViewController, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
@@ -144,7 +168,7 @@ extension ViewController{
    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return titulos.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -162,6 +186,9 @@ extension ViewController{
             break
         case 1:
             microphoneTapped()
+            break
+        case 2:
+            pictureView()
             break
         default:
             
